@@ -3,24 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note's <3</title>
+    <title>Elegant Love Note</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Note <3</h1>
-        <div class="note-container">
-            <div class="note">
-                <div class="note-front">
-                    <div class="heart-stamp"></div>
-                    <p>Click to flip</p>
+        <div class="envelope" id="envelope">
+            <div class="front">
+                <div class="flap"></div>
+                <div class="heart"></div>
+            </div>
+            <div class="back"></div>
+        </div>
+        <div class="love-note" id="love-note" style="display: none;">
+            <div class="note-header">
+                <div class="to-from">
+                    <span class="label">To:</span>
+                    <span id="note-to" class="value"></span>
                 </div>
-                <div class="note-back">
-                    <p id="note-content">Your love note will appear here</p>
+                <div class="to-from">
+                    <span class="label">From:</span>
+                    <span id="note-from" class="value"></span>
                 </div>
+            </div>
+            <div class="note-content" id="note-content"></div>
+            <div class="note-footer">
+                <span id="note-date" class="date"></span>
             </div>
         </div>
     </div>
+    <nav>
+        <a href="admin.html" class="nav-link">Write a Note</a>
+        <a href="history.html" class="nav-link">View History</a>
+    </nav>
     <script src="script.js"></script>
 </body>
 </html>
