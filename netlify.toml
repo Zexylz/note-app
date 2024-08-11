@@ -1,11 +1,13 @@
 [
 build
 ]
-  functions = "functions"
+  publish = "."
 
-[[
-redirects
-]]
-  from = "/admin"
-  to = "/admin.html"
-  status = 200
+[
+build.processing
+]
+  skip_processing = false
+[
+build.processing.html
+]
+  pretty_urls = true
