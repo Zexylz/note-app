@@ -10,48 +10,12 @@
     <div class="container">
         <h1>Love Note Admin</h1>
         <div class="admin-section">
-            <form name="love-note" method="POST" data-netlify="true" action="/success.html">
+            <form name="love-note" method="POST" data-netlify="true">
                 <input type="hidden" name="form-name" value="love-note">
                 <textarea name="note" placeholder="Enter your love note here" required></textarea>
                 <button type="submit">Send Note</button>
             </form>
         </div>
     </div>
-
-    <script>
-        document.querySelector("form").addEventListener("submit", function(e) {
-            e.preventDefault();
-            const form = e.target;
-            fetch("/", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(new FormData(form)).toString()
-            })
-            .then(() => {
-                // Update the LOVE_NOTE environment variable
-                fetch('/.netlify/functions/update-love-note', {
-                    method: 'POST',
-                    body: JSON.stringify({ note: form.note.value }),
-                    headers: { 'Content-Type': 'application/json' },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        window.location.href = "/success.html";
-                    } else {
-                        alert("Failed to update the love note. Please try again.");
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert("An error occurred. Please try again.");
-                });
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert("An error occurred. Please try again.");
-            });
-        });
-    </script>
 </body>
 </html>
