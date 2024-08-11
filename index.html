@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love Note</title>
+    <title>Note <3</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -21,6 +21,27 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const note = document.querySelector('.note');
+            const noteContent = document.getElementById('note-content');
+
+            if (note) {
+                note.addEventListener('click', () => {
+                    note.classList.toggle('open');
+                });
+            }
+
+            // Fetch the latest note
+            fetch('/.netlify/functions/get-note')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.note) {
+                        noteContent.textContent = data.note;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
 </body>
 </html>
