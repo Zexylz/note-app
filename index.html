@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note 123</title>
+    <title>Love Note</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Note <3</h1>
+        <h1>Love Note</h1>
         <div class="note-container">
             <div class="note">
                 <div class="note-front">
@@ -16,31 +16,14 @@
                     <p>Click to flip</p>
                 </div>
                 <div class="note-back">
-                    <p id="note-content">Your love note will appear here</p>
+                    <p>__LOVE_NOTE__</p>
                 </div>
             </div>
         </div>
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const note = document.querySelector('.note');
-            const noteContent = document.getElementById('note-content');
-
-            if (note) {
-                note.addEventListener('click', () => {
-                    note.classList.toggle('open');
-                });
-            }
-
-            // Fetch the latest note
-            fetch('/.netlify/functions/get-note')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.note) {
-                        noteContent.textContent = data.note;
-                    }
-                })
-                .catch(error => console.error('Error:', error));
+        document.querySelector('.note').addEventListener('click', function() {
+            this.classList.toggle('open');
         });
     </script>
 </body>
